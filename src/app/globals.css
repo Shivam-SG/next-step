@@ -2,3 +2,117 @@
 @tailwind components;
 @tailwind utilities;
 
+section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  /* background: #012255; */
+  /* background: #314a6f; */
+  /* background: #5d6776; */
+  background: #0d3560;
+  overflow: hidden;
+}
+
+section .wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url(/wave.png);
+  background-size: 1000px 100px;
+}
+
+/* First Wave */
+section .wave.wave1 {
+  animation: animate 30s linear infinite;
+  z-index: 1;
+  opacity: 1;
+  animation-delay: 0s;
+  bottom: 0;
+}
+
+/* Second Wave */
+section .wave.wave2 {
+  animation: animate 25s linear infinite;
+  z-index: 999;
+  opacity: 0.8;
+  animation-delay: -5s;
+  bottom: 10px;
+}
+
+/* Third Wave */
+section .wave.wave3 {
+  animation: animate 20s linear infinite;
+  z-index: 998;
+  opacity: 0.6;
+  animation-delay: -10s;
+  bottom: 15px;
+}
+
+/* Fourth Wave */
+section .wave.wave4 {
+  animation: animate 18s linear infinite;
+  z-index: 997;
+  opacity: 0.4;
+  animation-delay: -15s;
+  bottom: 20px;
+}
+
+/* Keyframes for wave animation */
+@keyframes animate {
+  0% {
+    background-position-x: 0;
+  }
+
+  100% {
+    background-position-x: 1000px;
+  }
+}
+
+@keyframes float1 {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+    /* Image 1 moves up 15px */
+  }
+}
+
+@keyframes float2 {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(10px);
+    /* Image 2 moves down 10px */
+  }
+}
+
+.animate-float1 {
+  animation: float1 3s ease-in-out infinite;
+}
+
+.animate-float2 {
+  animation: float2 3s ease-in-out infinite;
+}
+
+::-webkit-scrollbar{
+  width: 8px;
+}
+
+::-webkit-scrollbar-track{
+  background: #d1e5ff;
+}
+
+::-webkit-scrollbar-thumb{
+  background: linear-gradient(#060442, #0944aa);
+  border-radius: 10px;
+}
