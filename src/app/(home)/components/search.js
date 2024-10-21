@@ -4,7 +4,7 @@ import { VscSymbolKeyword } from "react-icons/vsc";
 
 const Search = () => {
   return (
-    <div className="md:flex items-center bg-white p-4 rounded-lg shadow-md space-x-4 space-y-5 md:space-y-0">
+    <div className="md:flex items-center bg-white p-4 rounded-xl md:rounded-full shadow-md md:space-x-4 space-y-5 md:space-y-0">
       {/* Industry Dropdown */}
       <div className="flex items-center space-x-2">
         <LiaIndustrySolid />
