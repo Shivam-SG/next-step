@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="bg-white py-10 border-t border-gray-200">
+    <footer className="bg-white py-10 border-t mt-10 border-gray-200">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:justify-between md:items-start">
           {/* Left Section */}
