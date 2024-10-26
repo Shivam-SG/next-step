@@ -13,11 +13,6 @@ const jobCategories = [
   { icon: "🔒", title: "Security Analyst", jobs: "254 Jobs Available" },
   { icon: "📄", title: "Content Writer", jobs: "142 Jobs Available" },
   { icon: "🔍", title: "Market Research", jobs: "532 Jobs Available" },
-  { icon: "📊", title: "Management", jobs: "965 Jobs Available" },
-  { icon: "🛍️", title: "Retail & Products", jobs: "563 Jobs Available" },
-  { icon: "🔒", title: "Security Analyst", jobs: "254 Jobs Available" },
-  { icon: "📄", title: "Content Writer", jobs: "142 Jobs Available" },
-  { icon: "🔍", title: "Market Research", jobs: "532 Jobs Available" },
 ];
 
 export default function JobCategorySlider() {
@@ -51,6 +46,13 @@ export default function JobCategorySlider() {
     removeSmoothScroll();
   };
 
+  const handleTouchStart = (e) => {
+    setIsDragging(true);
+    setStartPosition(e.touches[0].pageX - sliderRef.current.offsetLeft);
+    setScrollLeft(sliderRef.current.scrollLeft);
+    removeSmoothScroll();
+  };
+
   const handleMouseMove = (e) => {
     if (!isDragging) return;
     e.preventDefault();
@@ -59,7 +61,14 @@ export default function JobCategorySlider() {
     sliderRef.current.scrollLeft = scrollLeft - walk;
   };
 
-  const handleMouseUp = () => {
+  const handleTouchMove = (e) => {
+    if (!isDragging) return;
+    const x = e.touches[0].pageX - sliderRef.current.offsetLeft;
+    const walk = (x - startPosition) * 2;
+    sliderRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleMouseUpOrLeave = () => {
     setIsDragging(false);
   };
 
@@ -77,8 +86,11 @@ export default function JobCategorySlider() {
         className="flex gap-8 overflow-hidden whitespace-nowrap py-7"
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={() => setIsDragging(false)}
+        onMouseUp={handleMouseUpOrLeave}
+        onMouseLeave={handleMouseUpOrLeave}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleMouseUpOrLeave}
         onDragStart={(e) => e.preventDefault()}
         style={{ cursor: isDragging ? "grabbing" : "grab", userSelect: "none" }}
       >
@@ -104,10 +116,9 @@ export default function JobCategorySlider() {
       </button>
 
       <style jsx>{`
-        /* Smooth scroll transition */
         .smooth-scroll {
           scroll-behavior: smooth;
-          transition: scroll-left 0.3s ease; /* Smooth scroll transition */
+          transition: scroll-left 0.3s ease;
         }
       `}</style>
     </div>
