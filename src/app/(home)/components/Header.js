@@ -145,7 +145,7 @@ const Header = () => {
           </button>
         </div>
 
-        <div className="md:hidden">
+        <div className="md:hidden mr-4">
           <button
             onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
             className="text-[#3a3636]"
@@ -170,6 +170,18 @@ const Header = () => {
           </button>
         </div>
         <nav className="flex flex-col space-y-6 p-4">
+          <div>
+            <div className="space-x-4 flex justify-center">
+              <button className="bg-[#0053a1] hover:bg-blue-600 text-white font-semibold px-6 py-2 rounded-2xl transition ease-in-out duration-300 transform hover:scale-110 hover:shadow-xl">
+                Login
+              </button>
+              <button className="bg-[#0053a1] hover:bg-blue-600 text-white font-semibold px-6 py-2 rounded-2xl transition ease-in-out duration-300 transform hover:scale-110 hover:shadow-xl">
+                SignUp
+              </button>
+            </div>
+          </div>
+
+          <hr/>
           <Link
             href="/"
             className="font-semibold text-white hover:text-blue-600"
