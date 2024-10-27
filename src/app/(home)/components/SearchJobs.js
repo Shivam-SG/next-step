@@ -29,7 +29,7 @@ const SearchJobs = () => {
           />
         </div>
 
-        <div className="text-center md:text-left md:ml-20 my- xl:my-10 space-y-8 md:space-y-12">
+        <div className="text-center md:text-left md:ml-20 my-20 xl:my-10 space-y-8 md:space-y-12">
           <div>
             <h1 className="text-[1.5rem] md:text-[2rem] font-bold text-[#979494]">
               Millions Of Jobs.
