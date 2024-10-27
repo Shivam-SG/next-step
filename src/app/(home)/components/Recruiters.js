@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaLinkedin } from "react-icons/fa";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 import { SiAdobe } from "react-icons/si";
@@ -425,44 +425,51 @@ const recruiters = [
   },
 ];
 
-const RecruiterCard = ({ logo, name, rating, reviews, location, jobs }) => {
-  return (
-    <div className="bg-white border rounded-lg space-y-4 shadow-md p-4 min-w-[200px] hover:border-[#1b4b8b] hover:shadow-lg transition-transform transform hover:scale-105">
-      <div className="flex gap-4">
-        <div className="w-10 h-10 text-[3rem] text-blue-500">{logo}</div>
-        <div>
-          <h3 className="font-semibold text-gray-800">{name}</h3>
-          <div className="flex items-center space-x-1 text-yellow-400 text-sm">
-            <span>⭐ {rating.toFixed(1)}</span>
-            <span className="text-gray-500">({reviews})</span>
-          </div>
+const RecruiterCard = ({ logo, name, rating, reviews, location, jobs }) => (
+  <div className="bg-white border rounded-lg space-y-4 shadow-md p-4 w-full md:min-w-[200px] hover:border-[#1b4b8b] hover:shadow-lg transition-transform transform hover:scale-105">
+    <div className="flex gap-4">
+      <div className="w-10 h-10 text-[3rem] text-blue-500">{logo}</div>
+      <div>
+        <h3 className="font-semibold text-gray-800">{name}</h3>
+        <div className="flex items-center space-x-1 text-yellow-400 text-sm">
+          <span>⭐ {rating.toFixed(1)}</span>
+          <span className="text-gray-500">({reviews})</span>
         </div>
       </div>
-      <div className="flex gap-4">
-        <p className="text-gray-500 text-xs flex gap-1 items-center">
-          <CiLocationOn className="text-[1.2rem]" />
-          {location}
-        </p>
-        <p className="text-gray-500 text-xs">{jobs} Open Jobs</p>
-      </div>
     </div>
-  );
-};
+    <div className="flex justify-between items-center gap-4">
+      <p className="text-gray-500 text-xs flex gap-1 items-center">
+        <CiLocationOn className="text-[1.2rem]" />
+        {location}
+      </p>
+      <p className="text-gray-500 text-xs">{jobs} Open Jobs</p>
+    </div>
+  </div>
+);
 
 const Recruiter = () => {
-  const itemsPerPage = 15;
+  const [itemsPerPage, setItemsPerPage] = useState(15);
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Calculate total pages
-  const totalPages = Math.ceil(recruiters.length / itemsPerPage);
+  useEffect(() => {
+    const updateItemsPerPage = () => {
+      setItemsPerPage(window.innerWidth < 640 ? 5 : 15);
+    };
 
-  // Get the recruiters to display for the current page
+    updateItemsPerPage(); // Set initial value
+    window.addEventListener("resize", updateItemsPerPage); // Update on resize
+
+    return () => {
+      window.removeEventListener("resize", updateItemsPerPage);
+    };
+  }, []);
+
+  const totalPages = Math.ceil(recruiters.length / itemsPerPage);
   const currentItems = recruiters.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
 
-  // Handle pagination
   const nextPage = () =>
     setCurrentPage((prev) => Math.min(prev + 1, totalPages));
   const prevPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
@@ -473,12 +480,12 @@ const Recruiter = () => {
         <h1 className="text-3xl md:text-4xl font-bold text-gray-800">
           Top Recruiters
         </h1>
-        <div className="flex justify-center">
-          <div className="flex">
+        <div className="flex justify-center lg:justify-end">
+          <div className="md:flex items-center justify-center md:gap-20 xl:gap-60 space-y-7 md:space-y-0">
             <p className="text-gray-600 text-lg md:text-xl">
               Discover your next career move, freelance gig, or internship
             </p>
-            <div className="flex ml-20">
+            <div className="flex items-center justify-center">
               <button
                 onClick={prevPage}
                 disabled={currentPage === 1}

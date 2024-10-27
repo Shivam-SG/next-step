@@ -7,6 +7,7 @@ import BrowsebyCategories from "./components/BrowsebyCategories";
 import HiringApply from "./components/HiringApply";
 import JoboftheDay from "./components/JoboftheDay";
 import Recruiter from "./components/Recruiters";
+import SearchJobs from "./components/SearchJobs";
 
 function Home() {
   return (
@@ -16,6 +17,7 @@ function Home() {
       <BrowsebyCategories/>
       <HiringApply/>
       <JoboftheDay/>
+      <SearchJobs/>
       <Recruiter/>
       <NewsNotify/>
       <Footer/>
