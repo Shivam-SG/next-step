@@ -26,7 +26,7 @@ const HiringApply = () => {
             </button>
           </div>
   
-          <img src="/hiring2.png" alt="" className="w-20 md:w-28 lg:w-32 xl:w-48" />
+          <img src="/hiring2.png" alt="" className="w-20 md:w-28 lg:w-32 xl:w-48 md:block hidden" />
         </div>
       </div>
     );

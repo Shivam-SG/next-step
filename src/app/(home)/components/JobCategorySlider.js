@@ -7,6 +7,7 @@ const jobCategories = [
   { icon: "🛍️", title: "Retail & Products", jobs: "563 Jobs Available" },
   { icon: "🔒", title: "Security Analyst", jobs: "254 Jobs Available" },
   { icon: "📄", title: "Content Writer", jobs: "142 Jobs Available" },
+  { icon: "💸", title: "Finance", jobs: "168 Jobs Available" },
   { icon: "🔍", title: "Market Research", jobs: "532 Jobs Available" },
   { icon: "📊", title: "Management", jobs: "965 Jobs Available" },
   { icon: "🛍️", title: "Retail & Products", jobs: "563 Jobs Available" },

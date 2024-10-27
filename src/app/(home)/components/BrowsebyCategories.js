@@ -4,7 +4,7 @@ const BrowsebyCategories = () => {
     return (
       <div className="py-10 ">
         <div className="space-y-5">
-          <h1 className="text-3xl md:text-[40px] text-center font-semibold text-[#383e44]">
+          <h1 className="text-3xl md:text-[40px] text-center font-semibold text-[#262a2e]">
             Browse by category
           </h1>
           <p className="text-[#383e44] text-center md:text-2xl">
