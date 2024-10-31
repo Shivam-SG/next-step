@@ -65,12 +65,12 @@ export default function Blog() {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [translateX, setTranslateX] = useState(0);
-  const [postsPerPage, setPostsPerPage] = useState(3);
+  const [postsPerPage, setPostsPerPage] = useState(3); // Default is 3 posts per page on larger screens
   const sliderRef = useRef(null);
 
   useEffect(() => {
     const updatePostsPerPage = () => {
-      setPostsPerPage(window.innerWidth < 768 ? 1 : 3);
+      setPostsPerPage(window.innerWidth < 768 ? 1 : 3); // 1 post for screens < 768px, 3 posts otherwise
     };
 
     updatePostsPerPage();
@@ -97,7 +97,7 @@ export default function Blog() {
 
   const handleMouseMove = (e) => {
     if (!isDragging) return;
-
+    e.preventDefault();
     const moveX = e.clientX - startX;
     setTranslateX(moveX);
   };
@@ -170,7 +170,7 @@ export default function Blog() {
         onTouchEnd={handleTouchEnd}
       >
         <div
-          className="flex transition-transform duration-500 ease-in-out mb-10"
+          className="flex transition-transform duration-300 ease-in-out mb-10"
           style={{
             transform: `translateX(calc(-${currentIndex * (100 / postsPerPage)}% + ${translateX}px))`,
           }}
