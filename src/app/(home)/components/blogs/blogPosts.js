@@ -106,9 +106,9 @@ export default function Blog() {
     setIsDragging(false);
     sliderRef.current.style.cursor = "grab";
 
-    if (translateX > 50) {
+    if (translateX > 5) {
       prevPost();
-    } else if (translateX < -50) {
+    } else if (translateX < -5) {
       nextPost();
     }
 
@@ -130,9 +130,9 @@ export default function Blog() {
   const handleTouchEnd = () => {
     setIsDragging(false);
 
-    if (translateX > 50) {
+    if (translateX > 5) {
       prevPost();
-    } else if (translateX < -50) {
+    } else if (translateX < -5) {
       nextPost();
     }
 
