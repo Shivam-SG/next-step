@@ -1,7 +1,6 @@
 import React from "react";
 
 const Wave = () => {
-  // Generate an array of random dots with random properties
   const dots = Array.from({ length: 15 }).map((_, index) => ({
     top: `${Math.random() * 100}%`,            // Random vertical position
     opacity: 0.2 + Math.random() * 0.6,         // Random opacity between 0.2 and 0.8
@@ -12,13 +11,11 @@ const Wave = () => {
 
   return (
     <section>
-      {/* Existing Waves */}
       <div className="wave wave1"></div>
       <div className="wave wave2"></div>
       <div className="wave wave3"></div>
       <div className="wave wave4"></div>
 
-      {/* Random Moving Dots */}
       {dots.map((dot, index) => (
         <div
           key={index}
@@ -26,7 +23,7 @@ const Wave = () => {
           style={{
             top: dot.top,
             opacity: dot.opacity,
-            animationDelay: `${dot.delay}, ${dot.fadeInDelay}`, // Add fadeIn delay
+            animationDelay: `${dot.delay}, ${dot.fadeInDelay}`,
             animationDuration: dot.duration,
           }}
         ></div>

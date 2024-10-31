@@ -10,7 +10,6 @@ section {
   overflow: hidden;
 }
 
-/* Existing Waves */
 section .wave {
   position: absolute;
   bottom: 0;
@@ -62,17 +61,15 @@ section .wave.wave4 {
   }
 }
 
-/* Styling for Random Lines */
 section .random-line {
   position: absolute;
   left: 0;
-  width: 150%; /* Ensures the line spans across the screen */
+  width: 150%; 
   height: 2px;
   background: linear-gradient(90deg, rgba(255, 255, 255, 0.6), rgba(128, 128, 128, 0.3));
   animation: moveLines linear infinite;
 }
 
-/* Animation for the lines */
 @keyframes moveLines {
   0% {
     transform: translateX(-100%);
@@ -95,37 +92,34 @@ section .random-line {
   border-radius: 10px;
 }
 
-/* Styling for Random Dots */
 section .random-dot {
   position: absolute;
   left: 0;
-  width: 100px; /* Diameter of the dot */
-  height: 100px; /* Diameter of the dot */
+  width: 100px;
+  height: 100px; 
   background: linear-gradient(90deg, rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0.3));
-  border-radius: 50%; /* Makes the shape circular */
-  animation: moveDots linear infinite, fadeIn 1s ease forwards; /* Longer fadeIn duration */
-  opacity: 0; /* Start with opacity 0 for fade-in effect */
+  border-radius: 50%; 
+  animation: moveDots linear infinite, fadeIn 1s ease forwards; 
+  opacity: 0; 
 }
 
-/* Animation for the dots moving */
 @keyframes moveDots {
   0% {
-    transform: translateX(-5px); /* Start just off the left side */
+    transform: translateX(-5px); 
   }
   100% {
-    transform: translateX(calc(100vw + 5px)); /* End just off the right side */
+    transform: translateX(calc(100vw + 5px));
   }
 }
 
-/* Fade-in animation */
 @keyframes fadeIn {
   0% {
-    opacity: 0; /* Fully transparent */
+    opacity: 0; 
   }
   50% {
-    opacity: 0.5; /* Halfway visible for smoother transition */
+    opacity: 0.5;
   }
   100% {
-    opacity: 1; /* Fully visible */
+    opacity: 1; 
   }
 }

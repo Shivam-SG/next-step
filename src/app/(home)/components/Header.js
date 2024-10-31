@@ -2,17 +2,45 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FaAngleDown } from "react-icons/fa6";
-import { useState } from "react";
+import { useState, useEffect  } from "react";
 import { RiMenu3Fill } from "react-icons/ri";
-import { AiOutlineClose } from "react-icons/ai"; // Import the close icon
+import { AiOutlineClose } from "react-icons/ai"; 
 
 const Header = () => {
-  // State to manage mobile menu visibility
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const [isHeaderVisible, setHeaderVisible] = useState(true);
+  let lastScrollY = 0;
+
+  const handleScroll = () => {
+    if (typeof window !== "undefined") {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY && currentScrollY > 60) {
+        // Scrolling down
+        setHeaderVisible(false);
+      } else if (currentScrollY < lastScrollY) {
+        // Scrolling up
+        setHeaderVisible(true);
+      }
+      lastScrollY = currentScrollY;
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    
+    // Cleanup event listener on component unmount
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <header className="bg-white shadow-md fixed top-0 left-0 w-full z-50 md:rounded-b-full">
-      <div className="container mx-auto flex justify-between items-center md:px-10">
+    <header
+    className={`bg-white shadow-md fixed top-0 left-0 w-full z-50 rounded-b-3xl md:rounded-b-full transition-transform duration-300 ${
+      isHeaderVisible ? "translate-y-0" : "-translate-y-full"
+    }`}
+  >      <div className="container mx-auto flex justify-between items-center md:px-10">
         <div className="flex items-center">
           <Image src={"/logo.png"} alt="Logo" width={70} height={70} />
           <div className="md:hidden">
@@ -157,9 +185,9 @@ const Header = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed top-0 left-0 w-full h-full bg-[#10224b] shadow-md transition-transform duration-300 transform ${
+        className={`fixed top-0 left-0 w-full h-screen bg-[#10224b] shadow-xl transition-transform duration-300 transform ${
           isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
+        } z-50`}
       >
         <div className="flex justify-end p-4">
           <button

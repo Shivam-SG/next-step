@@ -1,4 +1,3 @@
-// components/MovingDotsBackground.js
 'use client'
 import React, { useEffect } from 'react';
 
@@ -29,7 +28,7 @@ const MovingDotsBackground = () => {
     return () => clearInterval(interval);
   }, []);
 
-  return null; // This component does not render any JSX directly
+  return null;
 };
 
 export default MovingDotsBackground;
