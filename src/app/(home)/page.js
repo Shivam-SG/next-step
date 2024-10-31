@@ -8,6 +8,8 @@ import HiringApply from "./components/HiringApply";
 import JoboftheDay from "./components/JoboftheDay";
 import Recruiter from "./components/Recruiters";
 import SearchJobs from "./components/SearchJobs";
+import SearchbyLocation from "./components/JobsbyLocation/SearchbyLocation";
+import Blog from "./components/blogs/blogPosts";
 
 function Home() {
   return (
@@ -19,6 +21,8 @@ function Home() {
       <JoboftheDay/>
       <SearchJobs/>
       <Recruiter/>
+      <SearchbyLocation/>
+      <Blog/>
       <NewsNotify/>
       <Footer/>
     </div>

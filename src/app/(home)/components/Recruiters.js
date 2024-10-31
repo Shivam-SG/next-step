@@ -426,7 +426,7 @@ const recruiters = [
 ];
 
 const RecruiterCard = ({ logo, name, rating, reviews, location, jobs }) => (
-  <div className="bg-white border rounded-lg space-y-4 shadow-md p-4 w-full md:min-w-[200px] hover:border-[#1b4b8b] hover:shadow-lg transition-transform transform hover:scale-105">
+  <div className="bg-white border rounded-lg space-y-4 shadow-md p-4 w-full md:min-w-[100px] hover:border-[#1b4b8b] hover:shadow-lg transition-transform transform hover:scale-105">
     <div className="flex gap-4">
       <div className="w-10 h-10 text-[3rem] text-blue-500">{logo}</div>
       <div>
